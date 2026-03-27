@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PVP TEXTURE — Minecraft Resource Pack By BROKEN_ABIDE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+  <a class="brand" href="#">PVP TEXTURE</a>
+      <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-label="Toggle menu">☰</button>
+      <nav class="nav" id="nav">
+        <a href="#home">Home</a>
+        <a href="#screenshots">Screenshots</a>
+        <a href="#download">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1>PVP TEXTURE — Minecraft Resource Pack</h1>
+          <p>High-quality PvP-focused textures and UI improvements for a clean competitive look. Works with <strong>1.16+</strong>.</p>
+          <p>
+            <a class="btn download-btn" id="download-cta" href="downloads/PVP-TEXTURE.zip" download>Download ZIP</a>
+            <button class="btn secondary" id="howto-btn">HOW TO USE IT?</button>
+          </p>
+        </div>
+        <div class="hero-graphic">
+          <img src="pack.png" alt="PVP TEXTURE preview" class="hero-preview">
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+  <h2>About</h2>
+  <p><strong>PVP TEXTURE</strong> is a curated resource pack focused on PvP clarity: sharpened textures, clearer item visuals, and minimal distractions for competitive play and improve your PVP vision.</p>
+      </div>
+    </section>
+
+    <section id="screenshots" class="section alt">
+      <div class="container">
+        <h2>Screenshots</h2>
+        <p>Click an image to open the full-size screenshot of PVP-TEXTURE.</p>
+        <div class="gallery">
+          <a href="assets/screenshot1.png" target="_blank"><img src="assets/screenshot1.png" alt="Screenshot 1" class="screenshot"></a>
+          <a href="assets/screenshot2.png" target="_blank"><img src="assets/screenshot2.png" alt="Screenshot 2" class="screenshot"></a>
+          <a href="assets/screenshot3.png" target="_blank"><img src="assets/screenshot3.png" alt="Screenshot 3" class="screenshot"></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Install section removed per user request -->
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+  <p>This is a real resource pack. PVP TEXTURE by BROKEN_ABIDE.</p>
+    </div>
+  </footer>
+
+  <!-- How-to modal -->
+  <div id="howto-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="howto-title">
+    <div class="modal-overlay" data-close></div>
+    <div class="modal-content" role="document">
+      <button class="modal-close" aria-label="Close" data-close>&times;</button>
+      <h2 id="howto-title">How to use PVP TEXTURE</h2>
+      <ol>
++        <li>First, download the resource pack using the "Download ZIP" button.</li>
++        <li>Extract the ZIP file to get the resource pack folder.</li>
++        <li>Place the ZIP or extracted folder into Minecraft's <code>resourcepacks</code> folder and enable it in-game.</li>
++      </ol>
++    </div>
++  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
