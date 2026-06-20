@@ -66,41 +66,31 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Download CTA: ensure clicking starts a download with a fixed filename (PVP-TEXTURE.zip)
+  // Copy-link CTA: copy the provided media URL to clipboard when clicked
   const downloadBtn = document.getElementById('download-cta');
   if (downloadBtn) {
-    downloadBtn.addEventListener('click', function(e) {
-      const url = this.href;
-      // If the page is opened via file:// protocol, skip the fetch approach
-      // and let the browser handle the anchor (download attribute) natively.
-      if (window.location.protocol === 'file:') {
-        // allow default behavior (do not call preventDefault)
-        return;
-      }
-
-      e.preventDefault();
+    downloadBtn.addEventListener('click', async function(e) {
+      const url = this.dataset.link || this.getAttribute('data-link');
       const prevText = this.textContent;
-      this.textContent = 'Starting download…';
-      fetch(url).then(resp => {
-        if (!resp.ok) throw new Error('Network response was not ok');
-        return resp.blob();
-      }).then(blob => {
-        const blobUrl = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.style.display = 'none';
-        a.href = blobUrl;
-        a.download = 'PVP-TEXTURE.zip';
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        setTimeout(() => URL.revokeObjectURL(blobUrl), 5000);
-      }).catch(err => {
-        console.error('Download failed, falling back to direct link:', err);
-        // fallback: navigate to URL (browser will handle download if server provides content-disposition)
-        window.location.href = url;
-      }).finally(() => {
-        this.textContent = prevText;
-      });
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(url);
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = url;
+          ta.style.position = 'fixed';
+          ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          ta.remove();
+        }
+        this.textContent = 'Copied!';
+      } catch (err) {
+        console.error('Copy failed:', err);
+        prompt('Copy this link:', url);
+      }
+      setTimeout(() => { this.textContent = prevText; }, 1800);
     });
   }
 });
